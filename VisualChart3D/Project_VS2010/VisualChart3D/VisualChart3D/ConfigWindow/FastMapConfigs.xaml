@@ -1,0 +1,34 @@
+﻿<Window x:Class="VisualChart3D.ConfigWindow.FastMapConfigs"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VisualChart3D.ConfigWindow"
+        mc:Ignorable="d"
+                Title="Настройка FastMap" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Icon="/Resources/VC3D.ico">
+    <Grid>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition MaxHeight="40"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox x:Name="gbSpaceType" Header="Метрика" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" >
+                <StackPanel>
+                    <RadioButton Content="Евклидова метрика" Height="16" HorizontalAlignment="Left" Margin="0,0,0,0" x:Name="rbMetricEuclidean" VerticalAlignment="Top" />
+                    <RadioButton Content="Неевклидова метрика" Height="16" HorizontalAlignment="Left" Margin="0,0,0,0" x:Name="rbMetricNonEuclidean" VerticalAlignment="Top" />
+                </StackPanel>
+
+            </GroupBox> 
+            <Button x:Name="BtnCancel" Content="Отмена" Margin="30,0,54,0" VerticalAlignment="Bottom" Click="BtnCancel_Click" Grid.Column="1" Grid.Row="6"/>
+            <Button x:Name="BtnSave" Content="Пересчитать" Margin="0,0,22.5,0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="82" Click="BtnSave_Click" Grid.Row="6"/>
+        </Grid>
+    </Grid>
+</Window>

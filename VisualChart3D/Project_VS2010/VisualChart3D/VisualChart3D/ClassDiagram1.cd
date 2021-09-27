@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VisualChart3D.Common.DataReader.FastSCVDataReader" Collapsed="true">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJAYQCAAAAAFgAAQCAkCIBAAFgAAoACAQAAgBeQQAQ=</HashCode>
+      <FileName>Common\DataReader\FastSCVDataReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="VisualChart3D.Common.DataReader.StandartDataReader" Collapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAIAAAAAAAAAABACAkCABAgEAAAAACAQAAgAUAAAA=</HashCode>
+      <FileName>Common\DataReader\StandartDataReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="VisualChart3D.Common.DataReader.IDataReader" Collapsed="true">
+    <Position X="1.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAACAEAAAAAAAAAAAAAAAAgAUAAAA=</HashCode>
+      <FileName>Common\DataReader\IDataReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="VisualChart3D.Common.DataReader.ICSVReader">
+    <Position X="3.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgCABAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>Common\DataReader\IDataReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="VisualChart3D.Common.DataReader.IUniversalReader" Collapsed="true">
+    <Position X="1.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\DataReader\IDataReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

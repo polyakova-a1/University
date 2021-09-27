@@ -1,0 +1,126 @@
+﻿<Window x:Class="VisualChart3D.MainWindow"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Visual Chart 3D" Height="600" Width="800" KeyDown="Window_KeyDown" Closing="Window_Closing" Icon="Resources/VC3D.ico" IsTabStop="True" Activated="Window_Activated" ResizeMode="CanResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="16" />
+            <RowDefinition Height ="*" />
+            <RowDefinition Height="Auto" MinHeight="16" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="2" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Viewport3D Name="MainViewport" 
+                    Grid.Column="1" 
+                    Grid.Row="1"
+                    ClipToBounds = "False"  
+                    IsHitTestVisible="false"
+                    RenderOptions.EdgeMode="Aliased">
+            <Viewport3D.Camera>
+                <OrthographicCamera x:Name="Camera" Width="2"
+	                NearPlaneDistance="0.125" 
+	                LookDirection="0,0,-1"
+	                UpDirection="0,1,0"
+	                Position="0,0,8" />
+            </Viewport3D.Camera>
+            <Viewport3D.Children>
+                <ModelVisual3D x:Name="Light1">
+                    <ModelVisual3D.Content>
+                        <DirectionalLight Color="White" Direction="1, 1, -1" />
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <ModelVisual3D x:Name="Light2">
+                    <ModelVisual3D.Content>
+                        <DirectionalLight Color="White" Direction="-1, 1, -1" />
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <ModelVisual3D x:Name="Light3">
+                    <ModelVisual3D.Content>
+                        <DirectionalLight Color="White" Direction="0,-1,-0.5" />
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+            </Viewport3D.Children>
+        </Viewport3D>
+
+        <Canvas x:Name="CanvasOn3D"
+                Grid.Column="1"
+                Grid.Row="1"
+                Background="Transparent" 
+            Margin="0,0,0,0" MouseMove="canvasOn3D_MouseMove" MouseUp="canvasOn3D_MouseUp" MouseWheel="canvasOn3D_MouseWheel" MouseDown="canvasOn3D_MouseDown"/>
+
+        <TextBlock x:Name ="StatusPane" 
+                Grid.Row="2" 
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Height="auto" />
+
+        <Canvas Name="ControlPane" 
+                Grid.Column="0"
+                Grid.Row="1"
+                Background="FloralWhite" 
+                HorizontalAlignment="Left" 
+                Margin="0,10" 
+                Width="0">
+        </Canvas>
+        
+        <Menu Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Margin="0,0,2,0">
+            
+            <MenuItem Header="Файл">
+                <MenuItem x:Name="MnOpen" Header="Исходные данные" Click="MnOpen_Click"/>
+                <MenuItem x:Name="MnExit" Header="Выход" Click="MnExit_Click" />
+
+            </MenuItem>
+
+            <MenuItem Header="Визуализация">
+                <MenuItem x:Name="MnFastMap" Header="Fast Map" Click="MnFastMap_Click"/>
+                <MenuItem x:Name="MnDisSpace" Header="Dissimilarity Space" Click="MnDisSpace_Click" />
+                <MenuItem x:Name="MnSammonMap" Header="Sammon Map" Click="MnSammonMap_Click" />
+                <MenuItem x:Name="MnKohonenMap" Header="Kohonen Map" Click="MnKohonenMap_Click" />
+                <MenuItem x:Name="MnPCA" Header="Principal Component Analysis" Click="MnPca_Click" />
+            </MenuItem>
+
+            <MenuItem Header="КНП">
+                <MenuItem x:Name="MnShortestOpenPath" Header="Алгоритмы">
+                    <!--MenuItem x:Name="MnShortestOpenPath_BruteForce_BrokenLines_Simple" Header="A0 (последовальный)" Click="MnShortestOpenPath_BruteForce_BrokenLines_Simple_Click" /-->
+                    <MenuItem x:Name="MnShortestOpenPath_BruteForce_BrokenLines" Header="A0" Click="MnShortestOpenPath_BruteForce_BrokenLines_Click" />
+                    <MenuItem x:Name="MnShortestOpenPath_Greedy" Header="A1" Click="MnShortestOpenPath_Greedy_Click" />
+                    <MenuItem x:Name="MnShortestOpenPath_Greedy_BruteForce_Lines" Header="A2" Click="MnShortestOpenPath_Greedy_BruteForce_Lines_Click" />
+                    <MenuItem x:Name="MnShortestOpenPath_Greedy_BruteForce_Pairs" Header="A3" Click="MnShortestOpenPath_Greedy_BruteForce_Pairs_Click" />
+                    <!--MenuItem x:Name="MnShortestOpenPath_NonGreedy" Header="A4" Click="MnShortestOpenPath_NonGreedy_Click" /-->
+                    <MenuItem x:Name="MnShortestOpenPath_NonGreedy_BruteForce_Pairs" Header="A4" Click="MnShortestOpenPath_NonGreedy_BruteForce_Pairs_Click" />
+                    <!--MenuItem x:Name="MnPermutations" Header="Вывод перестановок" Click="MnPermutations_Click" /-->
+                </MenuItem>
+                <MenuItem x:Name="MnShortestOpenPath_Visualization" Header="Визуализация">
+                    <MenuItem x:Name="MnShortestOpenPath_Visualization_Graph" Header="Визуализация графа" Click="MnShortestOpenPath_Visualization_Graph_Click" IsEnabled="False" />
+                    <MenuItem x:Name="MnShortestOpenPath_Visualization_Histogram" Header="Столбчатая диаграмма" Click="MnShortestOpenPath_Visualization_Histogram_Click" IsEnabled="False" />
+                    <MenuItem x:Name="MnShortestOpenPath_Visualization_ProjectionOnPath" Header="Проекция на путь" Click="MnShortestOpenPath_Visualization_ProjectionOnPath_Click" IsEnabled="False" />
+                </MenuItem>
+
+            </MenuItem>
+
+            <MenuItem Header="Генерация данных">
+                <MenuItem x:Name="MnGenerateDataOnPlot" Header="На графике" Click="MnGenerateDataOnPlot_Click" />
+            </MenuItem>
+
+            <MenuItem Header="Настройки">
+                <MenuItem x:Name="MnFastMapSett" Header="Настройка Fast Map" Click="MnFastMapSett_Click" />
+                <MenuItem x:Name="MnDisSpaceSett" Header="Настройка Dissimilarity Space" Click="MnDisSpaceSett_Click" />
+                <MenuItem x:Name="MnSamMapSett" Header="Настройка Sammon Mapping" Click="MnSamMapSett_Click" />
+                <MenuItem x:Name="MnKohonenMapSett" Header="Настройка Kohonen Mapping" Click="MnKohonenMapSett_Click" />
+            </MenuItem>
+            
+            <MenuItem Header="Вид">
+                <MenuItem x:Name="MnSettings" Header="Настройка отображения классов" Click="MnSettings_Click" />
+                <MenuItem x:Name="MnListObjects" IsCheckable="True"  Header="Список объектов" Checked="MnListObjects_Checked" Unchecked="MnListObjects_Unchecked" />
+            </MenuItem>
+            
+            <MenuItem Header="Помощь" Click="MenuItem_Click">
+                <MenuItem x:Name="MnHelp" Header="Справка"  />
+            </MenuItem>
+        </Menu>
+
+    </Grid>
+</Window>
+
